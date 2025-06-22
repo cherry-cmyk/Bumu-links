@@ -1,41 +1,37 @@
 
-// Load products from localStorage
-function loadProducts() {
-  const products = JSON.parse(localStorage.getItem("products")) || [];
-  const productList = document.getElementById("product-list");
-  if (productList) {
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("productForm");
+  const productList = document.getElementById("productList");
+  const products = JSON.parse(localStorage.getItem("products") || "[]");
+
+  function render() {
     productList.innerHTML = "";
-    products.forEach(product => {
+    products.forEach(p => {
       const card = document.createElement("div");
       card.className = "product-card";
-      card.innerHTML = `
-        <img src="${product.image}" alt="${product.name}">
-        <h3>${product.name}</h3>
-        <p>${product.price}</p>
-        <a href="${product.link}" target="_blank">Buy Now</a>
-      `;
+      card.innerHTML = \`
+        <img src="\${p.image}" alt="">
+        <h3>\${p.name}</h3>
+        <p>₹\${p.price}</p>
+        <a href="\${p.link}" target="_blank">Buy Now</a>
+      \`;
       productList.appendChild(card);
     });
   }
-}
 
-// Add product on admin page
-const form = document.getElementById("product-form");
-if (form) {
-  form.addEventListener("submit", function (e) {
+  render();
+
+  form.addEventListener("submit", e => {
     e.preventDefault();
-    const newProduct = {
-      name: document.getElementById("name").value,
-      price: document.getElementById("price").value,
-      link: document.getElementById("link").value,
-      image: document.getElementById("image").value
+    const product = {
+      name: form.productName.value,
+      price: form.productPrice.value,
+      link: form.productLink.value,
+      image: form.productImage.value
     };
-    const products = JSON.parse(localStorage.getItem("products")) || [];
-    products.push(newProduct);
+    products.push(product);
     localStorage.setItem("products", JSON.stringify(products));
-    alert("✅ Product added!");
+    render();
     form.reset();
   });
-}
-
-loadProducts(); // call on both pages
+});

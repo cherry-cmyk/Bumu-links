@@ -1,14 +1,78 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>BuMU Links - Products</title>
+  <meta charset="UTF-8">
+  <title>BuMU Links - E-commerce</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    .navbar {
+      background-color: #2874f0;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+    }
+    .navbar h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+    .navbar button {
+      background-color: white;
+      color: #2874f0;
+      border: none;
+      padding: 10px 16px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .navbar button:hover {
+      background-color: #e1e9f9;
+    }
+    #formSection, #productSection {
+      display: none;
+    }
+    #productSection.active, #formSection.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <h1>🛒 BuMU Links</h1>
-  <div id="product-list" class="product-grid"></div>
+
+  <div class="navbar">
+    <h1>BuMU Links</h1>
+    <div>
+      <button onclick="showSection('product')">🛒 Shop</button>
+      <button onclick="showSection('form')">➕ Add Product</button>
+    </div>
+  </div>
+
+  <div id="productSection" class="active">
+    <div class="product-grid" id="productList"></div>
+  </div>
+
+  <div id="formSection">
+    <form id="productForm">
+      <input type="text" id="productName" placeholder="Product Name" required>
+      <input type="text" id="productPrice" placeholder="Price" required>
+      <input type="url" id="productLink" placeholder="Product Link" required>
+      <input type="url" id="productImage" placeholder="Image URL" required>
+      <button type="submit">Add Product</button>
+    </form>
+  </div>
 
   <script src="script.js"></script>
+  <script>
+    function showSection(section) {
+      document.getElementById('productSection').classList.remove('active');
+      document.getElementById('formSection').classList.remove('active');
+      if (section === 'form') {
+        document.getElementById('formSection').classList.add('active');
+      } else {
+        document.getElementById('productSection').classList.add('active');
+      }
+    }
+  </script>
 </body>
 </html>
