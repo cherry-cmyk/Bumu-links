@@ -5,38 +5,6 @@
   <meta charset="UTF-8">
   <title>BuMU Links - E-commerce</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    .navbar {
-      background-color: #2874f0;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-    }
-    .navbar h1 {
-      margin: 0;
-      font-size: 22px;
-    }
-    .navbar button {
-      background-color: white;
-      color: #2874f0;
-      border: none;
-      padding: 10px 16px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .navbar button:hover {
-      background-color: #e1e9f9;
-    }
-    #formSection, #productSection {
-      display: none;
-    }
-    #productSection.active, #formSection.active {
-      display: block;
-    }
-  </style>
 </head>
 <body>
 
@@ -49,6 +17,16 @@
   </div>
 
   <div id="productSection" class="active">
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="🔍 Search products...">
+      <select id="filterCategory">
+        <option>All</option>
+        <option>Chicken</option>
+        <option>Mutton</option>
+        <option>Fish</option>
+        <option>Egg</option>
+      </select>
+    </div>
     <div class="product-grid" id="productList"></div>
   </div>
 
@@ -58,6 +36,13 @@
       <input type="text" id="productPrice" placeholder="Price" required>
       <input type="url" id="productLink" placeholder="Product Link" required>
       <input type="url" id="productImage" placeholder="Image URL" required>
+      <select id="productCategory" required>
+        <option value="">Select Category</option>
+        <option>Chicken</option>
+        <option>Mutton</option>
+        <option>Fish</option>
+        <option>Egg</option>
+      </select>
       <button type="submit">Add Product</button>
     </form>
   </div>
