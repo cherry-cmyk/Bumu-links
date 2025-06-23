@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   let products = [];
 
-  const SHEET_URL = "https://script.google.com/macros/s/AKfycbwURAKgF5Lb0iRsK_jnxWKaSwCkVqfvLVxdOtKnPlGdBRiMf2_B-UhKQh_4HZKBxxeM/exec";
+  const scriptURL = "https://script.google.com/macros/s/AKfycbwURAKg.../exec";
 
   async function fetchProducts() {
     try {
