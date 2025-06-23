@@ -1,34 +1,56 @@
 
-body {
-  font-family: Arial, sans-serif;
-  margin: 20px;
-  background: #f3f3f3;
+* {
+  box-sizing: border-box;
 }
-h1 {
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f4f8;
+  margin: 0;
+  padding: 0;
+}
+header {
+  background-color: #007bff;
+  padding: 20px;
   text-align: center;
-  color: #333;
+  color: white;
+}
+.subtitle {
+  font-size: 1rem;
+  margin-top: 5px;
+}
+main {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
 }
 form {
-  display: block;
-  margin: 10px auto;
-  width: 90%;
-  max-width: 500px;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 input, button {
-  padding: 10px;
-  margin-top: 5px;
-  width: 100%;
-  margin-bottom: 10px;
+  padding: 12px;
+  font-size: 1rem;
 }
 button {
-  background: #28a745;
+  background-color: #28a745;
   color: white;
-  border: none;
   font-weight: bold;
-  border-radius: 6px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 button:hover {
-  background: #1f8434;
+  background-color: #218838;
+}
+.filter-box {
+  text-align: center;
+  margin-bottom: 15px;
+}
+#searchInput {
+  padding: 10px;
+  width: 80%;
+  font-size: 1rem;
 }
 #productList {
   display: flex;
@@ -37,28 +59,45 @@ button:hover {
 }
 .product-card {
   background: white;
-  border: 1px solid #ccc;
-  margin: 10px;
-  padding: 10px;
-  width: 200px;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
   border-radius: 10px;
+  margin: 10px;
+  width: 220px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   text-align: center;
 }
 .product-card img {
   width: 100%;
-  height: 150px;
+  height: 140px;
   object-fit: cover;
+  border-radius: 6px;
+}
+.product-card h3 {
+  margin: 10px 0 5px;
+}
+.product-card p {
+  margin: 0;
 }
 .product-card a {
-  display: inline-block;
-  margin-top: 10px;
-  background: #007bff;
-  color: white;
-  padding: 8px 12px;
   text-decoration: none;
+  color: white;
+  background: #007bff;
+  padding: 6px 12px;
+  display: inline-block;
+  margin: 10px 0 5px;
   border-radius: 5px;
 }
-.product-card a:hover {
-  background: #0056b3;
+.delete-btn {
+  background: #dc3545;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #eaeaea;
+  font-size: 0.9rem;
 }

@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("productForm");
   const productList = document.getElementById("productList");
+  const searchInput = document.getElementById("searchInput");
   let products = [];
 
   const SHEET_URL = "https://script.google.com/macros/s/AKfycbwURAKgF5Lb0iRsK_jnxWKaSwCkVqfvLVxdOtKnPlGdBRiMf2_B-UhKQh_4HZKBxxeM/exec";
@@ -12,24 +13,37 @@ document.addEventListener("DOMContentLoaded", () => {
       const data = await res.json();
       products = data;
       render();
-    } catch (err) {
-      alert("Failed to load products from cloud.");
+    } catch {
+      alert("Failed to load products.");
     }
   }
 
   function render() {
+    const query = searchInput.value.toLowerCase();
     productList.innerHTML = "";
-    products.forEach(p => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        ${p.image ? `<img src="${p.image}" alt="">` : ""}
-        <h3>${p.name || "Product"}</h3>
-        <a href="${p.link}" target="_blank">Buy Now</a>
-      `;
-      productList.appendChild(card);
+
+    products.forEach((p, i) => {
+      if (p.name.toLowerCase().includes(query)) {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+          <img src="${p.image || 'https://via.placeholder.com/200x150'}" alt="Image">
+          <h3>${p.name}</h3>
+          ${p.price ? `<p>₹${p.price}</p>` : ""}
+          <a href="${p.link}" target="_blank">Buy Now</a><br>
+          <button class="delete-btn" onclick="deleteProduct(${i})">Delete</button>
+        `;
+        productList.appendChild(card);
+      }
     });
   }
+
+  window.deleteProduct = function(index) {
+    if (confirm("Are you sure you want to delete this product?")) {
+      products.splice(index, 1);
+      render();
+    }
+  };
 
   async function saveProduct(product) {
     try {
@@ -38,18 +52,18 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(product),
         headers: { "Content-Type": "application/json" },
       });
-    } catch (err) {
-      alert("Failed to save product to cloud.");
+    } catch {
+      alert("Failed to save to cloud.");
     }
   }
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const product = {
-      name: form.productName.value || "Product",
-      price: "", // not needed
+      name: form.productName.value,
+      price: form.productPrice.value,
       link: form.productLink.value,
-      image: form.productImage.value || "",
+      image: form.productImage.value,
       category: "redirect"
     };
     products.push(product);
@@ -57,6 +71,8 @@ document.addEventListener("DOMContentLoaded", () => {
     await saveProduct(product);
     form.reset();
   });
+
+  searchInput.addEventListener("input", render);
 
   fetchProducts();
 });
