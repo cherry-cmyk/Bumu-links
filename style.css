@@ -39,3 +39,20 @@ input, select, button {
   height: 150px;
   object-fit: cover;
 }
+
+#ecommerce-links {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#ecommerce-links button {
+  margin: 5px;
+  padding: 10px 20px;
+  background: #0072ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#ecommerce-links button:hover {
+  background: #005fd1;
+}
