@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cherry-cmyk.github.io/Bumu-links/sitemap.xml
