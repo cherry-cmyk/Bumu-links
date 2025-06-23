@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("productForm");
   const productList = document.getElementById("productList");
@@ -74,6 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchInput.addEventListener("input", render);
 
+  // 👇 ADD THIS: Open full URLs directly from search bar
   searchInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       const value = searchInput.value.trim();
@@ -87,3 +87,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   fetchProducts();
 });
+
+
+    
