@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Paste Product Links - BuMU</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🔗 Paste Product Links</h1>
+
+  <form id="productForm">
+    <input type="url" name="productLink" placeholder="Paste product link (e.g. from Flipkart)" required />
+    <input type="text" name="productName" placeholder="Product Name (optional)" />
+    <input type="url" name="productImage" placeholder="Image URL (optional)" />
+    <button type="submit">Add Product Link</button>
+  </form>
+
+  <div id="productList"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
