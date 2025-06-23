@@ -73,20 +73,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchInput.addEventListener("input", render);
 
-  // 👇 ADD THIS: Open full URLs directly from search bar
+  // 🔗 Open full URL if typed in search bar
   searchInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const value = searchInput.value.trim();
-      if (value.startsWith("http://") || value.startsWith("https://")) {
-        window.open(value, "_blank");
-        searchInput.value = "";
-        e.preventDefault();
-      }
+    const val = searchInput.value.trim();
+    if (e.key === "Enter" && (val.startsWith("http://") || val.startsWith("https://"))) {
+      window.open(val, "_blank");
+      searchInput.value = "";
+      e.preventDefault();
     }
   });
 
   fetchProducts();
 });
 
-
-    
