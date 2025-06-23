@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BuMU Links</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>🛒 BuMU Links</h1>
+
+  <form id="productForm">
+    <input type="text" name="productName" placeholder="Product Name" required />
+    <input type="text" name="productPrice" placeholder="Price" required />
+    <input type="url" name="productLink" placeholder="Product Link" required />
+    <input type="url" name="productImage" placeholder="Image URL" required />
+    <select name="productCategory" id="productCategory" required>
+      <option value="Grocery">Grocery</option>
+      <option value="Electronics">Electronics</option>
+      <option value="Clothing">Clothing</option>
+      <option value="Other">Other</option>
+    </select>
+    <button type="submit">Add Product</button>
+  </form>
+
+  <input type="text" id="searchInput" placeholder="Search products..." />
+  <select id="filterCategory">
+    <option value="All">All</option>
+    <option value="Grocery">Grocery</option>
+    <option value="Electronics">Electronics</option>
+    <option value="Clothing">Clothing</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <div id="productList"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
