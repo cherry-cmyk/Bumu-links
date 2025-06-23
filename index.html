@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BuMU Links - Smart Shopping</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🛍️ BuMU Smart Links</h1>
+    <p class="subtitle">Paste product links and manage your deals</p>
+  </header>
+
+  <main>
+    <form id="productForm">
+      <input type="text" name="productName" placeholder="Product Name" required />
+      <input type="text" name="productPrice" placeholder="Price (optional)" />
+      <input type="url" name="productLink" placeholder="Paste product link (e.g. Flipkart)" required />
+      <input type="url" name="productImage" placeholder="Image URL (optional)" />
+      <button type="submit">➕ Add Product</button>
+    </form>
+
+    <div class="filter-box">
+      <input type="text" id="searchInput" placeholder="🔍 Search products..." />
+    </div>
+
+    <div id="productList"></div>
+  </main>
+
+  <footer>
+    <p>Made with ❤️ for BuMU shoppers</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
