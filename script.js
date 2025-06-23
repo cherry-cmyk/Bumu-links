@@ -74,5 +74,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchInput.addEventListener("input", render);
 
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const value = searchInput.value.trim();
+      if (value.startsWith("http://") || value.startsWith("https://")) {
+        window.open(value, "_blank");
+        searchInput.value = "";
+        e.preventDefault();
+      }
+    }
+  });
+
   fetchProducts();
 });
